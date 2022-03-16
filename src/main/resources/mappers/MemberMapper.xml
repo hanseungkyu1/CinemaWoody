@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임 스페이스를 이용하면 멤버맵퍼에 있는걸 알게 해줌 -->
+<mapper namespace="com.CinemaWoody.member">
+
+    <insert id="insertMember">
+        INSERT INTO tbl_member (mid, mname, email, pwd1, pwd2, phone, birth) VALUES (#{mid}, #{mname}, #{email}, #{pwd1}, #{pwd2}, #{phone}, #{birth})
+    </insert>
+
+</mapper>
