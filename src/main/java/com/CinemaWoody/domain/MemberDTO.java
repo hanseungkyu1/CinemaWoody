@@ -1,7 +1,6 @@
 package com.CinemaWoody.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 public class MemberDTO implements Serializable {
@@ -14,11 +13,11 @@ public class MemberDTO implements Serializable {
     private String pwd1;
     private String pwd2;
     private String phone;
-    private Date birth;
+    private String birth;
 
     public MemberDTO() {}
 
-    public MemberDTO(String mid, String mname, String email, String pwd1, String pwd2, String phone, Date birth) {
+    public MemberDTO(String mid, String mname, String email, String pwd1, String pwd2, String phone, String birth) {
         this.mid = mid;
         this.mname = mname;
         this.email = email;
@@ -76,11 +75,11 @@ public class MemberDTO implements Serializable {
         this.phone = phone;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 

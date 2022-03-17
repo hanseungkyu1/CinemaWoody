@@ -10,4 +10,8 @@
         INSERT INTO tbl_member (mid, mname, email, pwd1, pwd2, phone, birth) VALUES (#{mid}, #{mname}, #{email}, #{pwd1}, #{pwd2}, #{phone}, #{birth})
     </insert>
 
+    <select id="midCheck" resultType="com.CinemaWoody.domain.MemberDTO">
+        SELECT mid FROM tbl_member WHERE mid = #{mid}
+    </select>
+
 </mapper>

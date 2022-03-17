@@ -15,4 +15,9 @@ public class MemberServiceImpl implements MemberService{
     public void insertMember(MemberDTO dto) {
         mDAO.insertMember(dto);
     }
+
+    @Override
+    public MemberDTO midCheck(String mid) {
+        return mDAO.midCheck(mid);
+    }
 }

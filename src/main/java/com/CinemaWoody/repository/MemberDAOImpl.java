@@ -18,4 +18,9 @@ public class MemberDAOImpl implements MemberDAO{
     public void insertMember(MemberDTO dto) {
         sqlSession.insert(NS + ".insertMember", dto);
     }
+
+    @Override
+    public MemberDTO midCheck(String mid) {
+        return sqlSession.selectOne(NS + ".midCheck", mid);
+    }
 }
