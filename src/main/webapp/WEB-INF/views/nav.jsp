@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="loginOutLink" value="${sessionScope.mid==null ? '/member/login' : '/member/logout'}"/>
+<c:set var="loginOut" value="${sessionScope.mid==null ? '로그인' : '로그아웃'}"/>
 <html>
 <head>
     <title>Title</title>
@@ -21,15 +23,29 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #e3f2fd;">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <%--<li class="nav-item active">
                     <a class="nav-link" href="<c:url value='/'/>">CINEMA WOODY <span class="sr-only">(current)</span></a>
+                </li>--%>
+                <li class="nav-item active">
+                    <c:choose>
+                        <c:when test="${not empty sessionScope.mid}">
+                            <div class="nav-link">${sessionScope.mid}님 환영합니다.</div>
+                        </c:when>
+                    </c:choose>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/member/login'/>">로그인</a>
+                    <a class="nav-link" href="<c:url value='${loginOutLink}'/>">${loginOut}</a>
                 </li>
+                <c:if test="${empty sessionScope.mid}">
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/member/insert'/>">회원가입</a>
                 </li>
+                </c:if>
+                <c:if test="${not empty sessionScope.mid}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/member/update'/>">회원정보수정</a>
+                    </li>
+                </c:if>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         예매

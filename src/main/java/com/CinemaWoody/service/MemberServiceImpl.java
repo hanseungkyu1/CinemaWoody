@@ -20,4 +20,5 @@ public class MemberServiceImpl implements MemberService{
     public MemberDTO midCheck(String mid) {
         return mDAO.midCheck(mid);
     }
+
 }

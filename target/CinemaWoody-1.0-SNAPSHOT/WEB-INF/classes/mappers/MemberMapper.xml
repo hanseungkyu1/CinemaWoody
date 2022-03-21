@@ -11,7 +11,7 @@
     </insert>
 
     <select id="midCheck" resultType="com.CinemaWoody.domain.MemberDTO">
-        SELECT mid FROM tbl_member WHERE mid = #{mid}
+        SELECT * FROM tbl_member WHERE mid = #{mid}
     </select>
 
 </mapper>

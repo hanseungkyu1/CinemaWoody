@@ -23,4 +23,5 @@ public class MemberDAOImpl implements MemberDAO{
     public MemberDTO midCheck(String mid) {
         return sqlSession.selectOne(NS + ".midCheck", mid);
     }
+
 }

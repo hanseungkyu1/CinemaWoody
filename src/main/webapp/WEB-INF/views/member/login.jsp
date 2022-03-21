@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="java.net.URLDecoder" %>
+<%@ page session="false" %>
 <html>
 <head>
     <title>로그인 화면</title>
@@ -126,10 +128,10 @@
 
 <div class="loginform">
     <h1>로그인 화면</h1>
-    <form action="">
-        <input type="text" name="" id="" placeholder="ID">
-        <input type="password" name="" id="" placeholder="Password">
-        <input type="checkbox" name="remember" id="checkbox" class="hidden">
+    <form action="<c:url value='/member/login'/>" method="post" onsubmit="return formCheck(this)">
+        <input type="text" name="mid" id="mid" value="${cookie.mid.value}" placeholder="ID" autofocus>
+        <input type="password" name="pwd" id="pwd" placeholder="Password">
+        <input type="checkbox" name="rememberId" id="checkbox" ${empty cookie.mid.value ? "" : "checked"} class="hidden">
         <label for="checkbox">
                 <span class="idsave">
                     <span class="idsave-checked">
@@ -138,13 +140,45 @@
                 </span>
             <span class="text">아이디 저장</span>
         </label>
+        <div id="msg" style="color: red; margin-bottom: 15px;">
+            <c:if test="${not empty param.msg}">
+                <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
+            </c:if>
+        </div>
         <input type="submit" value="LOGIN">
+        <input type="hidden" name="toURL" value="${param.toUrl}">
     </form>
     <div class="forgot">
-        <a href="#">join</a>
+        <a href="<c:url value='/member/insert'/>">join</a>
         <a href="#">forgot password ?</a>
     </div>
 </div>
+
+<script>
+
+    function formCheck(frm) {
+        var mid = document.getElementById("mid").value;
+
+        if (mid == '') {
+            alert("ID를 입력해주세요.");
+            $('#mid').focus();
+
+            return false;
+        }
+
+        var pwd = document.getElementById("pwd").value;
+
+        if (pwd == '') {
+            alert("Password를 입력해주세요.");
+            $('#pwd').focus();
+
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
 
 </body>
 </html>

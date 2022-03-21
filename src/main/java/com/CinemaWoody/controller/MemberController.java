@@ -2,6 +2,7 @@ package com.CinemaWoody.controller;
 
 import com.CinemaWoody.domain.MemberDTO;
 import com.CinemaWoody.service.MemberService;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Member;
+import java.net.URLEncoder;
 
 @Controller
 @RequestMapping("/member")
@@ -46,7 +53,7 @@ public class MemberController {
 
     }
 
-    // login 구현하기! 구현하면, 인강처럼 로그인 로그아웃 버튼 동적으로 변경되게도 구현, 세션과 쿠키도 이용
+    // login
     @GetMapping("/login")
     public String login() {
 
@@ -54,8 +61,51 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(String mid, String pwd, boolean rememberId, HttpServletResponse response) {
+    public String login(String mid, String pwd, boolean rememberId, String toUrl, HttpServletRequest request, HttpServletResponse response) {
 
+        if (!loginCheck(mid, pwd)) {
+            String msg = null;
+            try {
+                msg = URLEncoder.encode("ID 또는 Password가 일치하지 않습니다.", "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            return "redirect:/member/login?msg=" + msg;
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("mid", mid);
+
+        if (rememberId) {
+            Cookie cookie = new Cookie("mid", mid);
+            response.addCookie(cookie);
+        } else {
+            Cookie cookie = new Cookie("mid", mid);
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
+
+        toUrl = toUrl == null || toUrl.equals("") ? "/" : toUrl;
+
+        return "redirect:" + toUrl;
+    }
+
+    // id, pwd 체크
+    public boolean loginCheck(String mid, String pwd) {
+
+        MemberDTO mDto = mService.midCheck(mid);
+
+        if (mDto == null) {
+            return false;
+        }
+
+        return mDto.getPwd1().equals(pwd);
+    }
+
+    @GetMapping("/logout")
+    public String logOut(HttpSession session) {
+        session.invalidate();
 
         return "redirect:/";
     }
