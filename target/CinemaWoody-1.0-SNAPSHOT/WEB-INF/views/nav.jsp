@@ -43,7 +43,7 @@
                 </c:if>
                 <c:if test="${not empty sessionScope.mid}">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/member/update'/>">회원정보수정</a>
+                        <a class="nav-link" href="<c:url value='/member/update/${sessionScope.mid}'/>">회원정보수정</a>
                     </li>
                 </c:if>
                 <li class="nav-item dropdown">

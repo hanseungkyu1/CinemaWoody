@@ -24,4 +24,9 @@ public class MemberDAOImpl implements MemberDAO{
         return sqlSession.selectOne(NS + ".midCheck", mid);
     }
 
+    @Override
+    public void update(MemberDTO mDto) {
+        sqlSession.update(NS + ".update", mDto);
+    }
+
 }

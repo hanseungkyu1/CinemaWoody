@@ -14,4 +14,8 @@
         SELECT * FROM tbl_member WHERE mid = #{mid}
     </select>
 
+    <update id="update">
+        UPDATE tbl_member SET email = #{email}, pwd1 = #{pwd1}, pwd2 = #{pwd2}, phone = #{phone} WHERE mid = #{mid}
+    </update>
+
 </mapper>

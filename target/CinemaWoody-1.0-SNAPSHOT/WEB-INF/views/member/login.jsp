@@ -149,8 +149,8 @@
         <input type="hidden" name="toURL" value="${param.toUrl}">
     </form>
     <div class="forgot">
-        <a href="<c:url value='/member/insert'/>">join</a>
-        <a href="#">forgot password ?</a>
+        <a href="<c:url value='/member/insert'/>">회원가입</a>
+        <a href="#">비밀번호 찾기</a>
     </div>
 </div>
 

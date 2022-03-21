@@ -8,4 +8,5 @@ public interface MemberDAO {
 
     MemberDTO midCheck(String mid);
 
+    void update(MemberDTO mDto);
 }

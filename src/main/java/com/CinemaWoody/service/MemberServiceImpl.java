@@ -21,4 +21,9 @@ public class MemberServiceImpl implements MemberService{
         return mDAO.midCheck(mid);
     }
 
+    @Override
+    public void update(MemberDTO mDto) {
+        mDAO.update(mDto);
+    }
+
 }

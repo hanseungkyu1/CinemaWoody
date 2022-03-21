@@ -8,4 +8,5 @@ public interface MemberService {
 
     MemberDTO midCheck(String mid);
 
+    void update(MemberDTO mDto);
 }

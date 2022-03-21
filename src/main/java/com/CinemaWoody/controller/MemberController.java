@@ -5,10 +5,8 @@ import com.CinemaWoody.service.MemberService;
 import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -74,6 +72,7 @@ public class MemberController {
             return "redirect:/member/login?msg=" + msg;
         }
 
+        /*MemberDTO mDto = mService.midCheck(mid);*/
         HttpSession session = request.getSession();
         session.setAttribute("mid", mid);
 
@@ -106,6 +105,24 @@ public class MemberController {
     @GetMapping("/logout")
     public String logOut(HttpSession session) {
         session.invalidate();
+
+        return "redirect:/";
+    }
+
+    // 회원정보 수정
+    // 회원정보 수정화면 들어가기전에 비밀번호 체크하는 화면 만들기
+    @GetMapping("/update/{mid}")
+    public String update(@PathVariable("mid") String mid, Model model) {
+        MemberDTO mDto = mService.midCheck(mid);
+
+        model.addAttribute("mDto", mDto);
+
+        return "/member/update";
+    }
+
+    @PostMapping("/update")
+    public String update(MemberDTO mDto) {
+        mService.update(mDto);
 
         return "redirect:/";
     }
