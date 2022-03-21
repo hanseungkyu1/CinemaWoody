@@ -21,7 +21,9 @@
 
   <div style="text-align: center; margin-bottom: 2px;">
     <div>
-      <a style="text-decoration: none; color: black" href="<c:url value='/'/>"><h1 style="font-family: 'Lobster', cursive">CINEMA WOODY</h1></a>
+        <a style="text-decoration: none; color: black" href="<c:url value='/'/>">
+            <h1 style="font-family: 'Lobster', cursive">CINEMA WOODY</h1>
+        </a>
     </div>
   </div>
 

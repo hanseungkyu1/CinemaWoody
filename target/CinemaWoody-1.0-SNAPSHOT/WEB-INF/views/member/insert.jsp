@@ -145,8 +145,8 @@
     $('#mid').focus();
 
     $(document).ready(function () {
-        $("#midCheck").click(function (evnet) {
-            event.preventDefault();
+        $('#midCheck').click(function (e) {
+            e.preventDefault();
 
             var mid = $("[name = 'mid']").val();
 

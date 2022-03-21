@@ -18,14 +18,14 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #e3f2fd;">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="<c:url value='/'/>">CINEMA WOODY <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로그인</a>
+                    <a class="nav-link" href="<c:url value='/member/login'/>">로그인</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/member/insert'/>">회원가입</a>

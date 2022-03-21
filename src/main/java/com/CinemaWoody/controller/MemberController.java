@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -22,7 +24,7 @@ public class MemberController {
 
     }
 
-    // 회원가입
+    // 회원가입, 나중에 이메일 인증도 구현해보기
     @PostMapping("/insert")
     public String insertMember(MemberDTO dto) {
         mService.insertMember(dto);
@@ -42,5 +44,19 @@ public class MemberController {
             return "사용 불가능한 아이디입니다.";
         }
 
+    }
+
+    // login 구현하기! 구현하면, 인강처럼 로그인 로그아웃 버튼 동적으로 변경되게도 구현, 세션과 쿠키도 이용
+    @GetMapping("/login")
+    public String login() {
+
+        return "/member/login";
+    }
+
+    @PostMapping("/login")
+    public String login(String mid, String pwd, boolean rememberId, HttpServletResponse response) {
+
+
+        return "redirect:/";
     }
 }
