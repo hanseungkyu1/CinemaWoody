@@ -15,9 +15,13 @@ public class MemberDTO implements Serializable {
     private String phone;
     private String birth;
 
+    private String postcode;
+    private String address1;
+    private String address2;
+
     public MemberDTO() {}
 
-    public MemberDTO(String mid, String mname, String email, String pwd1, String pwd2, String phone, String birth) {
+    public MemberDTO(String mid, String mname, String email, String pwd1, String pwd2, String phone, String birth, String postcode, String address1, String address2) {
         this.mid = mid;
         this.mname = mname;
         this.email = email;
@@ -25,6 +29,9 @@ public class MemberDTO implements Serializable {
         this.pwd2 = pwd2;
         this.phone = phone;
         this.birth = birth;
+        this.postcode = postcode;
+        this.address1 = address1;
+        this.address2 = address2;
     }
 
     public String getMid() {
@@ -79,6 +86,30 @@ public class MemberDTO implements Serializable {
         return birth;
     }
 
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
     public void setBirth(String birth) {
         this.birth = birth;
     }
@@ -92,7 +123,10 @@ public class MemberDTO implements Serializable {
                 ", pwd1='" + pwd1 + '\'' +
                 ", pwd2='" + pwd2 + '\'' +
                 ", phone='" + phone + '\'' +
-                ", birth=" + birth +
+                ", birth='" + birth + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
                 '}';
     }
 

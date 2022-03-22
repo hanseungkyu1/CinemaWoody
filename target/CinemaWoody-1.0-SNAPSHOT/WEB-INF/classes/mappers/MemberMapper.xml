@@ -7,7 +7,7 @@
 <mapper namespace="com.CinemaWoody.member">
 
     <insert id="insertMember">
-        INSERT INTO tbl_member (mid, mname, email, pwd1, pwd2, phone, birth) VALUES (#{mid}, #{mname}, #{email}, #{pwd1}, #{pwd2}, #{phone}, #{birth})
+        INSERT INTO tbl_member (mid, mname, email, pwd1, pwd2, phone, birth, postcode, address1, address2) VALUES (#{mid}, #{mname}, #{email}, #{pwd1}, #{pwd2}, #{phone}, #{birth}, #{postcode}, #{address1}, #{address2})
     </insert>
 
     <select id="midCheck" resultType="com.CinemaWoody.domain.MemberDTO">
@@ -15,7 +15,7 @@
     </select>
 
     <update id="update">
-        UPDATE tbl_member SET email = #{email}, pwd1 = #{pwd1}, pwd2 = #{pwd2}, phone = #{phone} WHERE mid = #{mid}
+        UPDATE tbl_member SET email = #{email}, pwd1 = #{pwd1}, pwd2 = #{pwd2}, phone = #{phone}, postcode = #{postcode}, address1 = #{address1}, address2 = #{address2} WHERE mid = #{mid}
     </update>
 
 </mapper>
