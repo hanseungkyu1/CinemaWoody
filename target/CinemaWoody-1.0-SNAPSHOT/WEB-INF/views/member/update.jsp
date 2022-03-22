@@ -145,7 +145,7 @@
     </div>--%>
     <div class="form-group">
         <div class="col-sm-10" id="sign_button" style="margin: auto">
-            <button type="submit" class="btn btn-primary" style="display: inline-block">수정</button>
+            <button type="submit" class="btn-sm btn-primary" style="display: inline-block">수정</button>
         </div>
     </div>
 </form>

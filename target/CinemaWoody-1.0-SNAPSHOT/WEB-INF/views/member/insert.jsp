@@ -37,7 +37,7 @@
     <div class="form-group row">
         <label for="mid" class="col-sm-2 col-form-label">아이디</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="mid" name="mid" placeholder="아이디를 입력해주세요.">
+            <input type="text" class="form-control" id="mid" name="mid" placeholder="아이디를 입력해주세요." autofocus>
         </div>
         <button id="midCheck" class="btn-sm btn-dark" style="margin: auto">아이디 중복 검사</button>
     </div>
@@ -154,33 +154,36 @@
     </div>--%>
     <div class="form-group">
         <div class="col-sm-10" id="sign_button" style="margin: auto">
-            <button type="submit" class="btn btn-primary" style="display: inline-block">회원가입</button>
+            <button type="submit" class="btn-sm btn-primary" style="display: inline-block">회원가입</button>
         </div>
     </div>
 </form>
 </div>
 
 <script>
-    var mid = document.getElementById("mid").value;
-    $('#mid').focus();
 
     $(document).ready(function () {
+
         $('#midCheck').click(function (e) {
-            e.preventDefault();
 
             var mid = $("[name = 'mid']").val();
 
-            $.ajax({
-                type: 'post',
-                url: '/CinemaWoody/member/midCheck',
-                data: {
-                    'mid': mid
-                },
-                dataType: 'text',
-                success: function (result) {
-                    alert(result);
-                }
-            });
+            if (mid == '') {
+                alert("ID를 입력해주세요.");
+                return false;
+            }else if (mid.length > 5) {
+                $.ajax({
+                    type: 'post',
+                    url: '/CinemaWoody/member/midCheck',
+                    data: {
+                        'mid': mid
+                    },
+                    dataType: 'text',
+                    success: function (result) {
+                        alert(result);
+                    }
+                });
+            }
         });
     });
 
@@ -193,6 +196,8 @@
         if (frm.mid.value.length < 5) {
             setMessage('ID의 길이는 5글자 이상이어야 합니다.', frm.mid);
             return false;
+        }else{
+            setMessage('', frm.mid);
         }
 
         if (mid == '') {

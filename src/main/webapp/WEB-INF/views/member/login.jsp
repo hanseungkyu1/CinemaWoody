@@ -146,7 +146,7 @@
             </c:if>
         </div>
         <input type="submit" value="LOGIN">
-        <input type="hidden" name="toURL" value="${param.toUrl}">
+        <input type="hidden" name="toUrl" value="${param.toUrl}">
     </form>
     <div class="forgot">
         <a href="<c:url value='/member/insert'/>">회원가입</a>
