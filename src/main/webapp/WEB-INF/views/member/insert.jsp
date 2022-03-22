@@ -171,7 +171,7 @@
             if (mid == '') {
                 alert("ID를 입력해주세요.");
                 return false;
-            }else if (mid.length > 5) {
+            }else if (mid.length >= 5) {
                 $.ajax({
                     type: 'post',
                     url: '/CinemaWoody/member/midCheck',
@@ -189,14 +189,13 @@
 
     function formCheck(frm) {
         var mid = document.getElementById("mid").value;
-        $('#mid').focus();
 
         var msg = '';
 
         if (frm.mid.value.length < 5) {
             setMessage('ID의 길이는 5글자 이상이어야 합니다.', frm.mid);
             return false;
-        }else{
+        } else {
             setMessage('', frm.mid);
         }
 
@@ -276,6 +275,16 @@
             return false;
         }
 
+        var idReg = /^[a-zA-Z]+[a-z0-9A-Z]{4,19}$/g;
+
+        if (!idReg.test(mid)) {
+            setMessage('아이디는 영소문자로 시작하는 5~20자 영문자 또는 숫자이어야 합니다.', frm.mid);
+
+            return false;
+        } else {
+            setMessage('', frm.mid);
+        }
+
         return true;
 
     }
@@ -288,6 +297,7 @@
         }
     }
 
+    // 주소 API
     function execPostCode() {
         new daum.Postcode({
             oncomplete: function(data) {
