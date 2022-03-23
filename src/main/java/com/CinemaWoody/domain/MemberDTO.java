@@ -19,9 +19,11 @@ public class MemberDTO implements Serializable {
     private String address1;
     private String address2;
 
+    private int role;
+
     public MemberDTO() {}
 
-    public MemberDTO(String mid, String mname, String email, String pwd1, String pwd2, String phone, String birth, String postcode, String address1, String address2) {
+    public MemberDTO(String mid, String mname, String email, String pwd1, String pwd2, String phone, String birth, String postcode, String address1, String address2, int role) {
         this.mid = mid;
         this.mname = mname;
         this.email = email;
@@ -32,6 +34,7 @@ public class MemberDTO implements Serializable {
         this.postcode = postcode;
         this.address1 = address1;
         this.address2 = address2;
+        this.role = role;
     }
 
     public String getMid() {
@@ -114,6 +117,14 @@ public class MemberDTO implements Serializable {
         this.birth = birth;
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "MemberDTO{" +
@@ -127,6 +138,7 @@ public class MemberDTO implements Serializable {
                 ", postcode='" + postcode + '\'' +
                 ", address1='" + address1 + '\'' +
                 ", address2='" + address2 + '\'' +
+                ", role=" + role +
                 '}';
     }
 

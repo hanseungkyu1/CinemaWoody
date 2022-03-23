@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<c:set var="loginOutLink" value="${sessionScope.mid==null ? '/member/login' : '/member/logout'}"/>
-<c:set var="loginOut" value="${sessionScope.mid==null ? '로그인' : '로그아웃'}"/>
+<c:set var="loginOutLink" value="${sessionScope.dto.mid==null ? '/member/login' : '/member/logout'}"/>
+<c:set var="loginOut" value="${sessionScope.dto.mid==null ? '로그인' : '로그아웃'}"/>
 <html>
 <head>
     <title>Title</title>
@@ -28,22 +28,32 @@
                 </li>--%>
                 <li class="nav-item active">
                     <c:choose>
-                        <c:when test="${not empty sessionScope.mid}">
-                            <div class="nav-link">${sessionScope.mid}님 환영합니다.</div>
+                        <c:when test="${not empty sessionScope.dto.mid}">
+                            <div class="nav-link">${sessionScope.dto.mid}님 환영합니다.</div>
                         </c:when>
                     </c:choose>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value='${loginOutLink}'/>">${loginOut}</a>
                 </li>
-                <c:if test="${empty sessionScope.mid}">
+                <c:if test="${empty sessionScope.dto.mid}">
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value='/member/insert'/>">회원가입</a>
                 </li>
                 </c:if>
-                <c:if test="${not empty sessionScope.mid}">
+                <c:if test="${not empty sessionScope.dto.mid}">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/member/update/${sessionScope.mid}'/>">회원정보수정</a>
+                        <a class="nav-link" href="<c:url value='/member/update/${sessionScope.dto.mid}'/>">회원정보수정</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.dto.role == 1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='#'/>">회원 목록</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.dto.role == 1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='#'/>">영화 등록</a>
                     </li>
                 </c:if>
                 <li class="nav-item dropdown">

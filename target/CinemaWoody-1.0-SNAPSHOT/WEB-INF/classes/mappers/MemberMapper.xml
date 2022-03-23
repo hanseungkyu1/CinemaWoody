@@ -7,7 +7,7 @@
 <mapper namespace="com.CinemaWoody.member">
 
     <insert id="insertMember">
-        INSERT INTO tbl_member (mid, mname, email, pwd1, pwd2, phone, birth, postcode, address1, address2) VALUES (#{mid}, #{mname}, #{email}, #{pwd1}, #{pwd2}, #{phone}, #{birth}, #{postcode}, #{address1}, #{address2})
+        INSERT INTO tbl_member (mid, mname, email, pwd1, pwd2, phone, birth, postcode, address1, address2, role) VALUES (#{mid}, #{mname}, #{email}, #{pwd1}, #{pwd2}, #{phone}, #{birth}, #{postcode}, #{address1}, #{address2}, 0)
     </insert>
 
     <select id="midCheck" resultType="com.CinemaWoody.domain.MemberDTO">

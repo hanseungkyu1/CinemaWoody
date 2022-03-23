@@ -2,7 +2,6 @@ package com.CinemaWoody.controller;
 
 import com.CinemaWoody.domain.MemberDTO;
 import com.CinemaWoody.service.MemberService;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Member;
 import java.net.URLEncoder;
 
 @Controller
@@ -72,9 +70,10 @@ public class MemberController {
             return "redirect:/member/login?msg=" + msg;
         }
 
-        /*MemberDTO mDto = mService.midCheck(mid);*/
+        MemberDTO dto = new MemberDTO();
+        dto = mService.midCheck(mid);
         HttpSession session = request.getSession();
-        session.setAttribute("mid", mid);
+        session.setAttribute("dto", dto);
 
         if (rememberId) {
             Cookie cookie = new Cookie("mid", mid);
@@ -88,6 +87,7 @@ public class MemberController {
         toUrl = toUrl == null || toUrl.equals("") ? "/" : toUrl;
 
         return "redirect:" + toUrl;
+
     }
 
     // id, pwd 체크
@@ -111,6 +111,7 @@ public class MemberController {
 
     // 회원정보 수정
     // 회원정보 수정화면 들어가기전에 비밀번호 체크하는 화면 만들기
+    // 회원정보 수정화면으로 들어갈 때 세션 만료되서 로그아웃 되어있으면 로그인 화면으로 이동하도록 if문 구현
     @GetMapping("/update/{mid}")
     public String update(@PathVariable("mid") String mid, Model model) {
         MemberDTO mDto = mService.midCheck(mid);
