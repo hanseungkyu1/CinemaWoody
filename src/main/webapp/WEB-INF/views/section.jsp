@@ -10,25 +10,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Section</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height: 600px; margin-bottom: 50px;">
-  <div class="carousel-inner">
+  <div class="carousel-inner" style="height: 600px;">
     <div class="carousel-item active">
-      <img src="../../resources/img/Movi_1920774.jpg" class="d-block w-100" alt="모비우스(임시)">
+      <img src="resources/img/movi1920774.jpg" class="d-block w-100" alt="모비우스(임시)">
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+      <img src="resources/img/super_1920774.jpeg" class="d-block w-100" alt="슈퍼소닉(임시)">
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+      <img src="resources/img/Hot_1920774.jpeg" class="d-block w-100" alt="뜨거운피(임시)">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
@@ -85,6 +85,7 @@
       </div>
     </div>
   </div>
+</div>
 
 </body>
 </html>
