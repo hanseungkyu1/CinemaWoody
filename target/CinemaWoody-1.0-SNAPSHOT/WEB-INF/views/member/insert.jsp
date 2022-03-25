@@ -152,9 +152,9 @@
             </div>
         </div>
     </div>--%>
-    <div class="form-group">
-        <div class="col-sm-10" id="sign_button" style="margin: auto">
-            <button type="submit" class="btn-sm btn-primary" style="display: inline-block">회원가입</button>
+    <div class="form-group row">
+        <div class="col-sm" id="sign_button" style="margin: auto">
+            <button type="submit" class="btn btn-sm btn-secondary float-right">회원가입</button>
         </div>
     </div>
 </form>
@@ -337,6 +337,8 @@
     }
 
 </script>
+
+<jsp:include page="../footer.jsp"/>
 
 </body>
 </html>

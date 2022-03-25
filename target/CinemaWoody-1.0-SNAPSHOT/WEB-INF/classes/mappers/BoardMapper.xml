@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임 스페이스를 이용하면 멤버맵퍼에 있는걸 알게 해줌 -->
+<mapper namespace="com.CinemaWoody.member">
+
+    <select id="list" resultType="com.CinemaWoody.domain.BoardDTO">
+        SELECT * FROM tbl_board ORDER BY bno DESC
+    </select>
+
+    <select id="getAmount" resultType="Integer">
+        SELECT COUNT(bno) FROM tbl_board
+    </select>
+
+    <insert id="insert">
+        INSERT INTO tbl_board (bno, title, content, mid) VALUES((SELECT COALESCE(MAX(bno)+1, 1) FROM tbl_board a), #{title}, #{content}, #{mid})
+
+        <selectKey order="AFTER" keyProperty="bno" resultType="Integer">
+            SELECT COALESCE(MAX(bno)) FROM tbl_board
+        </selectKey>
+    </insert>
+
+</mapper>
