@@ -68,7 +68,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value='/board/list'/>">공지사항</a>
+                    <a class="nav-link" href="<c:url value='/board/list/1'/>">공지사항</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

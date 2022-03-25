@@ -27,18 +27,20 @@ public class BoardController {
 
         pt.setCurPage(curPage);
 
+        pt = bService.list(pt);
+
         model.addAttribute("pt", pt);
 
         return "board/list";
 
     }
 
-    @GetMapping("/list")
-    public void list(PageTO<BoardDTO> pt, Model model) {
-        pt = bService.list(pt);
-
-        model.addAttribute("pt", pt);
-    }
+//    @GetMapping("/list")
+//    public void list(PageTO<BoardDTO> pt, Model model) {
+//        pt = bService.list(pt);
+//
+//        model.addAttribute("pt", pt);
+//    }
 
     // 글쓰기 화면으로 갈 때 로그인 되어있는 회원 정보 가져가야함(작성자때문)
     @GetMapping("/insertui")
@@ -52,8 +54,12 @@ public class BoardController {
 
         bService.insert(dto);
 
-        dto.getRegDate().substring(0, 10);
-
         return "redirect:/board/read/" + dto.getBno();
+    }
+
+    @GetMapping("/read")
+    public String read(BoardDTO dto) {
+
+        return "";
     }
 }

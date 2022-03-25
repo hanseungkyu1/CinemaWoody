@@ -55,18 +55,21 @@
     <c:forEach items="${pt.list}" var="dto">
         <tr>
             <th scope="row">${dto.bno}</th>
-            <td><a id="atag" href="#">${dto.title}</a></td>
-            <td>${dto.regDate}</td>
+            <td><a id="atag" href="<c:url value='/board/read/${dto.bno}/${curPage}'/>">${dto.title}</a></td>
+            <td>${dto.regDate.substring(0, 10)}</td>
             <td>${dto.viewCnt}</td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
-    <a href="<c:url value='/board/insertui'/>" type="button">
-        <button type="button" class="btn btn-sm btn-secondary float-right">글쓰기</button>
-    </a>
+    <c:if test="${sessionScope.dto.role == 1}">
+        <a href="<c:url value='/board/insertui'/>" type="button">
+            <button type="button" class="btn btn-sm btn-secondary float-right">글쓰기</button>
+        </a>
+    </c:if>
 </div>
 
+<jsp:include page="../page.jsp"/>
 <jsp:include page="../footer.jsp"/>
 
 </body>

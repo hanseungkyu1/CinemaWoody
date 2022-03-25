@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
         <label for="mid">작성자</label>
-        <input type="text" class="form-control" id="mid" name="mid" <%--readonly--%><%-- value="${dto.getMid}"--%>>
+        <input type="text" class="form-control" id="mid" name="mid" value="${sessionScope.dto.mname}" readonly>
     </div>
     <div class="form-group">
         <label for="content">내용</label>
