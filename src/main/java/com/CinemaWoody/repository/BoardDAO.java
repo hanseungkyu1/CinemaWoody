@@ -12,4 +12,8 @@ public interface BoardDAO {
     int getAmount();
 
     void insert(BoardDTO dto);
+
+    int increaseViewCnt(int bno);
+
+    BoardDTO read(int bno);
 }

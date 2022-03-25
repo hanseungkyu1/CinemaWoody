@@ -8,4 +8,8 @@ public interface BoardService {
     PageTO<BoardDTO> list(PageTO<BoardDTO> pt);
 
     void insert(BoardDTO dto);
+
+    int increaseViewCnt(int bno);
+
+    BoardDTO read(int bno);
 }

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -21,7 +23,6 @@ public class BoardController {
     @Autowired
     private BoardService bService;
 
-    // 고객센터 게시판 만들기
     @GetMapping("/list/{curPage}")
     public String list(@PathVariable("curPage") int curPage, PageTO<BoardDTO> pt, Model model) {
 
@@ -35,16 +36,8 @@ public class BoardController {
 
     }
 
-//    @GetMapping("/list")
-//    public void list(PageTO<BoardDTO> pt, Model model) {
-//        pt = bService.list(pt);
-//
-//        model.addAttribute("pt", pt);
-//    }
-
-    // 글쓰기 화면으로 갈 때 로그인 되어있는 회원 정보 가져가야함(작성자때문)
     @GetMapping("/insertui")
-    public String insertUi(HttpServletRequest request) {
+    public String insertUi() {
 
         return "board/insert";
     }
@@ -53,13 +46,44 @@ public class BoardController {
     public String insert(BoardDTO dto) {
 
         bService.insert(dto);
-
-        return "redirect:/board/read/" + dto.getBno();
+        PageTO pt = new PageTO<>();
+        return "redirect:/board/read/" + dto.getBno() + "/" + pt.getCurPage();
     }
 
-    @GetMapping("/read")
-    public String read(BoardDTO dto) {
+    @GetMapping("/read/{bno}/{curPage}")
+    public String read(@PathVariable("bno") int bno, @PathVariable("curPage") int curPage, HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
+        BoardDTO dto = bService.read(bno);
 
-        return "";
+        model.addAttribute("dto", dto);
+        model.addAttribute("curPage", curPage);
+
+        Cookie[] cookies = request.getCookies();
+
+        // 비교를 위한 쿠키
+        Cookie viewCookie = null;
+
+        if (cookies != null && cookies.length > 0) {
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies[i].getName().equals("cookie" + bno)) {
+                    viewCookie = cookies[i];
+                }
+            }
+        }
+
+        if (viewCookie == null) {
+            Cookie newCookie = new Cookie("cookie" + bno, "|" + bno + "|");
+
+            response.addCookie(newCookie);
+
+            int result = bService.increaseViewCnt(bno);
+
+//            if (result > 0) {
+//
+//            }
+
+            return "board/read";
+        }
+
+        return "board/read";
     }
 }

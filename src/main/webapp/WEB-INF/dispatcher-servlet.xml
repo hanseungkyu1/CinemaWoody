@@ -18,4 +18,27 @@
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 
+    <beans:bean id="loginInterceptor" class="com.CinemaWoody.interceptor.LoginInterceptor"></beans:bean>
+    <beans:bean id="authInterceptor" class="com.CinemaWoody.interceptor.AuthInterceptor"></beans:bean>
+
+    <!-- controller 앞,뒤로 사용 가능 -->
+    <!-- 인터셉터 등록, 어떤 인터셉터클래스 객체를 적용할 것인지, 어떤 url에서 해당 인터셉터클래스 객체를 적용할것인지 정보를 줌 -->
+    <!-- 데이터 전송 방식에 대한 구분은 없음 -->
+    <interceptors>
+
+        <interceptor>
+            <mapping path="/CinemaWoody/member/login"/>
+            <beans:ref bean="loginInterceptor"/>
+        </interceptor>
+
+        <interceptor>
+            <mapping path="/CinemaWoody/board/**"/>
+            <!-- exclude : authInterceptor 적용 x -->
+            <exclude-mapping path="/CinemaWoody/board/list/**"/>
+            <exclude-mapping path="/CinemaWoody/board/read/**"/>
+            <beans:ref bean="authInterceptor"/>
+        </interceptor>
+
+    </interceptors>
+
 </beans:beans>

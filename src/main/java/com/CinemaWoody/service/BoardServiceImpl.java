@@ -30,4 +30,14 @@ public class BoardServiceImpl implements BoardService {
     public void insert(BoardDTO dto) {
         bDAO.insert(dto);
     }
+
+    @Override
+    public int increaseViewCnt(int bno) {
+        return bDAO.increaseViewCnt(bno);
+    }
+
+    @Override
+    public BoardDTO read(int bno) {
+        return bDAO.read(bno);
+    }
 }

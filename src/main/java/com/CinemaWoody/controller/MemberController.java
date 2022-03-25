@@ -86,6 +86,8 @@ public class MemberController {
 
         toUrl = toUrl == null || toUrl.equals("") ? "/" : toUrl;
 
+        System.out.println(toUrl);
+
         return "redirect:" + toUrl;
 
     }

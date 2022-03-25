@@ -22,4 +22,12 @@
         </selectKey>
     </insert>
 
+    <update id="increaseViewCnt">
+        UPDATE tbl_board SET viewCnt = viewCnt + 1 WHERE bno = #{bno}
+    </update>
+
+    <select id="read" resultType="com.CinemaWoody.domain.BoardDTO">
+        SELECT * FROM tbl_board WHERE bno = #{bno}
+    </select>
+
 </mapper>

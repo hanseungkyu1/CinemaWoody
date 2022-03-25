@@ -36,6 +36,16 @@ public class BoardDAOImpl implements BoardDAO{
         sqlSession.insert(NS + ".insert", dto);
     }
 
+    @Override
+    public int increaseViewCnt(int bno) {
+        return sqlSession.update(NS + ".increaseViewCnt", bno);
+    }
+
+    @Override
+    public BoardDTO read(int bno) {
+        return sqlSession.selectOne(NS + ".read", bno);
+    }
+
     // 조회수 증가
 
 }
