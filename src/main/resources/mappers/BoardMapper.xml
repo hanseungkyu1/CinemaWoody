@@ -30,4 +30,12 @@
         SELECT * FROM tbl_board WHERE bno = #{bno}
     </select>
 
+    <update id="updateBoard">
+        UPDATE tbl_board SET title = #{title}, content = #{content}, updateDate = CURRENT_TIMESTAMP WHERE bno = #{bno}
+    </update>
+
+    <!--<update id="update">
+        UPDATE tbl_board SET title = #{title}, content = #{content}, updateDate = CURRENT_TIMESTAMP WHERE bno = #{bno}
+    </update>-->
+
 </mapper>

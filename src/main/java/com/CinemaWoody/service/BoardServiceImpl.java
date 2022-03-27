@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
     public BoardDTO read(int bno) {
         return bDAO.read(bno);
     }
+
+    @Override
+    public void updateBoard(BoardDTO dto) {
+        bDAO.updateBoard(dto);
+    }
 }

@@ -15,6 +15,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Connection;
 
 @Controller
 @RequestMapping("/board")
@@ -85,5 +86,24 @@ public class BoardController {
         }
 
         return "board/read";
+    }
+
+    @GetMapping("/update/{bno}/{curPage}")
+    public String updateUi(@PathVariable("bno") int bno, @PathVariable("curPage") int curPage, Model model) {
+        BoardDTO dto = bService.read(bno);
+
+        model.addAttribute("dto", dto);
+        model.addAttribute("curPage", curPage);
+
+        return "board/update";
+    }
+
+    @PostMapping("/update/{bno}/{curPage}")
+    public String update(@PathVariable("bno") int bno, @PathVariable("curPage") int curPage, BoardDTO dto) {
+        dto.setBno(bno);
+
+        bService.updateBoard(dto);
+
+        return "redirect:/board/read/" + bno + "/" + curPage;
     }
 }

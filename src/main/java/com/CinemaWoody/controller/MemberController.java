@@ -130,5 +130,5 @@ public class MemberController {
         return "redirect:/";
     }
 
-    // 회원목록, 게시판 만들기
+    // 회원목록, 게시판 수정, 목록, 삭제 만들기
 }

@@ -10,7 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
-    <title>글 쓰기</title>
+    <title>공지사항 수정</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -27,10 +27,10 @@
 <jsp:include page="../nav.jsp"/>
 
 <div class="container">
-<form class="qna" action="<c:url value='/board/insert'/>" method="post">
+<form class="qna" action="<c:url value='/board/update/${dto.bno}/${curPage}'/>" method="post">
     <div class="form-group">
         <label for="title">제목</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title" value="${dto.title}">
     </div>
     <div class="form-group">
         <label for="mid">작성자</label>
@@ -39,9 +39,10 @@
     <div class="form-group">
         <label for="content">내용</label>
         <textarea class="form-control" id="content" rows="10" name="content">
+            <c:out value="${dto.content}"/>
         </textarea>
     </div>
-    <button type="submit" class="btn-sm btn-secondary">작성 완료</button>
+    <button type="submit" class="btn-sm btn-secondary">수정 완료</button>
 </form>
 </div>
 

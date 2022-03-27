@@ -12,4 +12,6 @@ public interface BoardService {
     int increaseViewCnt(int bno);
 
     BoardDTO read(int bno);
+
+    void updateBoard(BoardDTO dto);
 }

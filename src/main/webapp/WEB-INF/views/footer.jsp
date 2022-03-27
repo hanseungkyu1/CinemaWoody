@@ -17,17 +17,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
         .footer {
-            position: relative;
             width: 100%;
+            z-index: 1;
             bottom: 0;
-            margin-top: 20px;
+            position: relative;
         }
     </style>
 </head>
 <body>
 
 <footer class="footer">
-<div style="text-align: left; margin-bottom: 2px;">
+<div style="text-align: left; margin-bottom: 2px; margin-top: 50px;">
     <div class="container">
         <%--<a style="text-decoration: none; color: black" href="<c:url value='/'/>">--%>
             <h3 style="font-family: 'Lobster', cursive; color: gray; margin-bottom: 5px;">CINEMA WOODY</h3>
