@@ -51,6 +51,11 @@ public class BoardDAOImpl implements BoardDAO{
         sqlSession.update(NS + ".updateBoard", dto);
     }
 
+    @Override
+    public void deleteBoard(int bno) {
+        sqlSession.delete(NS + ".deleteBoard", bno);
+    }
+
     // 조회수 증가
 
 }

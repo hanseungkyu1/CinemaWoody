@@ -38,9 +38,7 @@
     </div>
     <div class="form-group">
         <label for="content">내용</label>
-        <textarea class="form-control" id="content" rows="10" name="content">
-            <c:out value="${dto.content}"/>
-        </textarea>
+        <textarea class="form-control" id="content" rows="10" name="content"><c:out value="${dto.content}"/></textarea>
     </div>
     <button type="submit" class="btn-sm btn-secondary">수정 완료</button>
 </form>

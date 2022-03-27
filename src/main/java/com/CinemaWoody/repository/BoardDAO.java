@@ -18,4 +18,6 @@ public interface BoardDAO {
     BoardDTO read(int bno);
 
     void updateBoard(BoardDTO dto);
+
+    void deleteBoard(int bno);
 }

@@ -6,10 +6,7 @@ import com.CinemaWoody.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -105,5 +102,12 @@ public class BoardController {
         bService.updateBoard(dto);
 
         return "redirect:/board/read/" + bno + "/" + curPage;
+    }
+
+    @RequestMapping(value = "/delete/{bno}/{curPage}", method = {RequestMethod.GET, RequestMethod.POST})
+    public String delete(@PathVariable("bno") int bno, @PathVariable("curPage") int curPage) {
+        bService.deleteBoard(bno);
+
+        return "redirect:/board/list/" + curPage;
     }
 }

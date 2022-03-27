@@ -54,10 +54,10 @@
         <a href="<c:url value='/board/update/${dto.bno}/${curPage}'/>" type="button" class="float-right">
             <button type="button" class="btn btn-sm btn-secondary float-right" style="margin-left: 5px">수정</button>
         </a>
-        <a href="<c:url value='/board/update/${dto.bno}/${curPage}'/>" type="button" class="float-right">
+        <a href="<c:url value='/board/delete/${dto.bno}/${curPage}'/>" type="button" class="float-right">
             <button type="button" class="btn btn-sm btn-secondary float-right" style="margin-left: 5px">삭제</button>
         </a>
-        <a href="<c:url value='/board/update/${dto.bno}/${curPage}'/>" type="button" class="float-right">
+        <a href="<c:url value='/board/list/${curPage}'/>" type="button" class="float-right">
             <button type="button" class="btn btn-sm btn-secondary float-right" style="margin-left: 5px">목록</button>
         </a>
     </c:if>
