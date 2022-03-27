@@ -53,7 +53,7 @@
                 </c:if>
                 <c:if test="${sessionScope.dto.role == 1}">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='#'/>">영화 등록</a>
+                        <a class="nav-link" href="<c:url value='/admin/listMovie/1'/>">영화 목록</a>
                     </li>
                 </c:if>
                 <li class="nav-item dropdown">
